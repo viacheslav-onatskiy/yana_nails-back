@@ -16,6 +16,10 @@ app.use(bodyParser.json({ limit: '30 mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30 mb', extended: true }));
 app.use(cors());
 
+app.use('/', (req, res) => {
+  res.send('Check api for deploy 1');
+});
+
 app.use('/reviews', reviewRoutes);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
