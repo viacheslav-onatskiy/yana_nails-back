@@ -20,14 +20,6 @@ app.use('/reviews', reviewRoutes);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 
-app.use('/', (req, res) => {
-  res.send('Check api for deploy 1');
-});
-
-app.use('/wow', (req, res) => {
-  res.send('WOW!!!!Check api for deploy 1');
-});
-
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Request-Method', '*');
