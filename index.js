@@ -1,13 +1,13 @@
-import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import express from 'express';
+import mongoose from 'mongoose';
 
-import reviewRoutes from './routes/reviews.js';
-import usersRouter from './routes/users.js';
 import authRouter from './routes/auth.js';
 import emailRouter from './routes/email.js';
+import reviewRoutes from './routes/reviews.js';
+import usersRouter from './routes/users.js';
 
 const app = express();
 dotenv.config();

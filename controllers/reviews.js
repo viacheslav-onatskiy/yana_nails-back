@@ -8,7 +8,17 @@ import UserModel from '../models/userModel.js';
 export const getReviews = async (req, res) => {
   try {
     const reviews = await ReviewModel.find().sort({ date: -1 });
-    res.json(reviews);
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.pageSize);
+
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = page * pageSize;
+
+    const paginatedItems = reviews.slice(startIndex, endIndex);
+
+    const totalPages = Math.ceil(reviews.length / pageSize);
+
+    res.json({ reviews: paginatedItems, totalPages, totalItems: reviews.length });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

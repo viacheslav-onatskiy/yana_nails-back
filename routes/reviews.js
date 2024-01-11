@@ -1,11 +1,11 @@
 import express from 'express';
+import { check } from 'express-validator';
 import {
   createReview,
+  deleteReview,
   getReviews,
-  updateReview,
-  deleteReview
+  updateReview
 } from '../controllers/reviews.js';
-import { check } from 'express-validator';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
