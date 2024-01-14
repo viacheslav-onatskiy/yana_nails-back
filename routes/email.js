@@ -7,19 +7,21 @@ const router = express.Router();
 // @desc     send email
 // @access   Public
 router.post('/', async (req, res) => {
+  const { name, email, phoneNumber, review } = req.body;
+
   try {
     const mailOptions = {
-      from: req.body.email,
+      from: email,
       to: process.env.email,
-      subject: req.body.subject,
+      subject: `😊 Message from: ${name} | ${email}`,
       html: `
       <p>You have a new contact request.</p>
       <h3>Contact details</h3>
       <ul>
-        <li>Name: ${req.body.name}</li>
-        <li>Email: ${req.body.email}</li>
-        <li>Phone number: ${req.body.phoneNumber}</li>
-        <li>Review: ${req.body.review}</li>
+        <li><b>Name:</b> ${name}</li>
+        <li><b>Email:</b> ${email}</li>
+        <li><b>Phone number:</b> ${phoneNumber}</li>
+        <li><b>Review:</b> <pre>${review}</pre></li>
       </ul>
       `
     };
@@ -34,7 +36,7 @@ router.post('/', async (req, res) => {
       } else {
         res.send({
           success: true,
-          message: 'Thanks for contacting us. We will get back to you shortly.'
+          message: 'Thanks for contacting me. I will get back to you shortly.'
         });
       }
     });
